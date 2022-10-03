@@ -11,5 +11,6 @@ def process_image(filename):
     rgb_im.save(filename.replace("png", "jpeg"), quality=80)
 
 
-pool = Pool()
-pool.map(process_image, filenames)
+if __name__ == "__main__":
+    pool = Pool()
+    pool.map(process_image, filenames)
