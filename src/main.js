@@ -338,6 +338,7 @@ const createDnas = async (createList) => {
   for (const { newDna, editionCount, index, layerConfigIndex } of createList) {
     const layers = allLayers[layerConfigIndex];
     let results = constructLayerToDna(newDna, layers);
+    let abstractedIndexes = [index];
     let loadedElements = [];
 
     results.forEach((layer) => {
