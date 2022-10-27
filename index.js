@@ -57,5 +57,37 @@ function chunks(array, size) {
     }
 
     await Promise.all(workers);
+
+    await createAllMetadataFile();
   }
 })();
+
+const createAllMetadataFile = async () => {
+  const allMetadataFilepath = "./build/json/_metadata.json";
+  try {
+    fs.unlinkSync(allMetadataFilepath);
+  } catch (err) {}
+
+  const jsonDir = "./build/json";
+  const sortedFiles = await getSortedFiles(jsonDir);
+  let all = [];
+  for (let index in sortedFiles) {
+    const filepath = `./build/json/${sortedFiles[index]}`;
+    let jsonData = JSON.parse(fs.readFileSync(filepath, "utf-8"));
+    all.push(jsonData);
+  }
+
+  fs.writeFileSync(allMetadataFilepath, JSON.stringify(all, null, 2));
+};
+
+const getSortedFiles = async (dir) => {
+  const files = await fs.promises.readdir(dir);
+
+  return files
+    .map((fileName) => ({
+      name: fileName,
+      time: fs.statSync(`${dir}/${fileName}`).mtime.getTime(),
+    }))
+    .sort((a, b) => a.time - b.time)
+    .map((file) => file.name);
+};

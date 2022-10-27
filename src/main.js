@@ -326,7 +326,6 @@ const chooseDnas = async () => {
     }
     layerConfigIndex++;
   }
-  writeMetaData(JSON.stringify(metadataList, null, 2));
   return createList;
 };
 
