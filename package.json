@@ -17,13 +17,18 @@
     "rarity": "node utils/rarity.js",
     "preview": "node utils/preview.js",
     "update_info": "node utils/update_info.js",
-    "generate_metadata": "node utils/generate_metadata.js"
+    "generate_metadata": "node utils/generate_metadata.js",
+    "fs_rename": "node utils/fs_rename.js",
+    "put_files": "node utils/put_files.js"
   },
   "author": "Daniel Eugene Botha (HashLips)",
   "license": "MIT",
   "dependencies": {
     "canvas": "^2.8.0",
     "gif-encoder-2": "^1.0.5",
-    "sha1": "^1.1.1"
+    "sha1": "^1.1.1",
+    "dotenv": "^16.0.2",
+    "minimist": "^1.2.5",
+    "web3.storage": "^3.1.0"
   }
 }

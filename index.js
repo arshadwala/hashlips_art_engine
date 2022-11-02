@@ -1,4 +1,5 @@
 const basePath = process.cwd();
+const fs = require("fs");
 const { numWorkers, batchSize } = require(`${basePath}/src/config.js`);
 const {
   chooseDnas,
